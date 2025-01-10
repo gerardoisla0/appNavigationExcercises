@@ -1,6 +1,5 @@
 import React from 'react'
-import { Pressable, Text } from 'react-native'
-import { styles } from '../theme/theme';
+import { Button } from 'react-native-paper';
 
 interface Props {
     onAction: () => void;
@@ -11,11 +10,13 @@ export const ButtonComponent = (
     {onAction, label}:Props
 ) => {
   return (
-    <Pressable
+    <Button
         onPress={() => onAction()}
-        style={styles.button}
+        mode="contained"
+        textColor='black'
+        style={{marginBottom: 15}}
     >
-        <Text style={styles.buttonText}>{label}</Text>
-    </Pressable>
+       {label}
+    </Button>
   )
 }

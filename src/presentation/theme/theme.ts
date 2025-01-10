@@ -36,3 +36,14 @@ export const styles = StyleSheet.create({
         height:50
     }
 })
+
+export const globalTheme = StyleSheet.create({
+    globalMargin: {
+      marginHorizontal: 20
+    },
+    imgPosition: {
+        position: 'absolute',
+        top: -100,
+        right: -100,
+    },
+  })

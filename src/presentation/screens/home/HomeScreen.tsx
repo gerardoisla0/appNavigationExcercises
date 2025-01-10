@@ -1,9 +1,10 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import { styles } from '../../theme/theme';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackPrams } from '../../routes/StackNavigation';
+import { Text } from 'react-native-paper';
 
 export const HomeScreen = () => {
 
@@ -11,7 +12,7 @@ export const HomeScreen = () => {
 
   return (
     <View style={styles.container} >
-      <Text style={styles.title}>Bienvenido alumno de IDAT</Text>
+      <Text variant='headlineLarge' style={{color:'black'}}>Bienvenido alumno de IDAT</Text>
       <ButtonComponent
           onAction={ () => navigation.navigate('Pokemons')}
           label="Ir a Lista de Pokemons"
