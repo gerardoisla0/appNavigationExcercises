@@ -1,28 +1,15 @@
 import React from 'react'
-import { Image, View } from 'react-native'
-import { globalTheme, styles } from '../../theme/theme';
-import { FlatList, Pressable } from 'react-native-gesture-handler';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { RootStackPrams } from '../../routes/StackNavigation';
+import {  View } from 'react-native'
+import { globalTheme } from '../../theme/theme';
+import { FlatList } from 'react-native-gesture-handler';
 import { GetPokemonUseCase } from '../../../domain/useCases/getPokemon';
 import { PokeballBackground } from '../../components/PokeballBackground';
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
-import { ActivityIndicator, Text } from 'react-native-paper';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import {  Text } from 'react-native-paper';
 import { PokemonCard } from '../../components/PokemonCard';
-
-//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png
-
-interface Pokemon {
-  id: string,
-  name: string,
-  imageUrl?: string
-}
+import { FullScreenLoader } from '../../components/FullScreenLoader';
 
 export const PokemonsScreen = () => {
-
-  const navigation = useNavigation<NavigationProp<RootStackPrams>>();
-  
-  //const pokemons = GetPokemonUseCase(0,20);
   
   const {isLoading, data, fetchNextPage} = useInfiniteQuery({
     queryKey: ['pokemons','infinite'],
@@ -33,7 +20,7 @@ export const PokemonsScreen = () => {
   });
 
   if(isLoading){
-    return <ActivityIndicator />
+    return <FullScreenLoader />
   }
 
   return (

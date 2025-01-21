@@ -8,7 +8,7 @@ export type RootStackPrams = {
   Home: undefined,
   Pokemons:undefined,
   Settings:undefined,
-  Pokemon: {id: string, name: string, imageUrl: string}
+  Pokemon: {id: number}
 }
 const Stack = createStackNavigator<RootStackPrams>();
 

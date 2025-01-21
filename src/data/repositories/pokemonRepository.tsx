@@ -18,11 +18,12 @@ export class PokemonRepositoryImpl implements PokemonRepository{
 
             const pokeApiPokemons = await Promise.all(pokemonPromises);
 
-            const pokemons = pokeApiPokemons.map(item =>
+            const pokemonsPromises = pokeApiPokemons.map(item =>
                 PokemonMapper.pokeApitoPokemonEntity(item.data)
             );
 
-            return pokemons;
+            return await Promise.all(pokemonsPromises);
+
         }catch(error){
             console.log(error);
             throw new Error("Error obtiendo pokemons.");
