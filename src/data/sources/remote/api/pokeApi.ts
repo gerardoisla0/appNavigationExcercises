@@ -1,5 +1,6 @@
+import { API_URL_POKEMON } from "@env";
 import axios from "axios";
 
 export const pokeApi = axios.create({
-    baseURL: 'https://pokeapi.co/api/v2'
+    baseURL: API_URL_POKEMON
 });

@@ -3,7 +3,9 @@ import { StyleSheet } from "react-native"
 export const colors = {
     primary: 'purple',
     dark: 'black',
-    light: 'white'
+    light: 'white',
+    surface: '#c2c2c2',
+    error: 'red'
 }
 
 export const styles = StyleSheet.create({
