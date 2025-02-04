@@ -48,4 +48,9 @@ export const globalTheme = StyleSheet.create({
         top: -100,
         right: -100,
     },
+    buttonMenu: {
+        flexDirection: "row", 
+        flexWrap:"wrap", 
+        gap:5
+    }
   })
