@@ -29,7 +29,7 @@ export const HomeScreen = () => {
             label="Buscar Pokemon"
         />
         <ButtonComponent
-            onAction={ () => navigation.navigate('Pokemons')}
+            onAction={ () => navigation.navigate('Settings')}
             label="Chat Grupal RT"
         />
         <ButtonComponent
