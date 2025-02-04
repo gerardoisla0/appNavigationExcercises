@@ -2,8 +2,9 @@ import { User } from '../../domain/entities/users';
 import { AuthRepository } from '../../domain/repositories/authRepository.interface';
 import { AuthMapper } from '../mappers/auth.mapper';
 import { backendDM } from '../sources/remote/api/backendDM';
+import { AuthUser } from '../sources/remote/interface/authUser.interface';
 import { BackendUser } from '../sources/remote/interface/backendDM.interface';
-
+import auth from '@react-native-firebase/auth'
 
 export class AuthRepositoryImpl implements AuthRepository{
 
@@ -26,11 +27,39 @@ export class AuthRepositoryImpl implements AuthRepository{
             throw new Error(error.response?.data?.message || error.message);
         }
     }
-    login(email: string, password: string): Promise<string> {
-        throw new Error('Method not implemented.');
+    async login(email: string, password: string): Promise<string> {
+        try{
+  
+            const userCredentials =  await auth().signInWithEmailAndPassword(email,password);
+            
+            const idToken = await userCredentials.user.getIdToken();
+
+            console.log('Token :',idToken);
+
+            return idToken;
+            
+        }catch(error:any){
+            console.log(error);
+            throw new Error(error.response?.data?.message || error.message);
+        }
     }
-    checkStatus(email: string, token: string): Promise<User> {
-        throw new Error('Method not implemented.');
+
+    async verify(email: string, token: string): Promise<AuthUser> {
+        try{
+            const url = '/auth/verify';
+            const inputData = {
+                "email": email,
+                "token": token
+            }
+
+            const {data} =  await backendDM.post<AuthUser>(url,inputData);
+
+            return data;
+            
+        }catch(error:any){
+            console.log(error);
+            throw new Error(error.response?.data?.message || error.message);
+        }
     }
 
 }

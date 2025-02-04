@@ -7,17 +7,20 @@ import { RootStackPrams } from '../../routes/StackNavigation';
 import { colors } from '../../theme/theme';
 import { emailValidator, passwordValidator } from '../../utils/Validators';
 import { TextInput } from '../../components/TextInput';
+import { useAuthStore } from '../../hooks/useAuthStore';
 
 interface Props extends StackScreenProps<RootStackPrams, 'LoginScreen'>{};
 
 export const LoginScreen = ({navigation}: Props) => {
 
+    const {login, verify} = useAuthStore();
     const [email, setEmail] = useState({ value: '', error: ''});
     const [password, setPassword] = useState({ value: '', error: ''});
     const [visible, setVisible] = useState(false);
     const [message, setMessage] = useState('');
+    const [isPosting, setIsPosting] = useState(false);
 
-    const _onSignUpPressed = async () => {
+    const _onLoginInPressed = async () => {
         const emailError = emailValidator(email.value);
         const pwdError = passwordValidator(password.value);
 
@@ -28,14 +31,17 @@ export const LoginScreen = ({navigation}: Props) => {
         }
 
         try{
-           /* const userCreated = await LoginUseCase( email.value, password.value);
-            if(userCreated != null){
-              setMessage("Usuario inicio sesión correctamente");
-              showDialog();
-            }else{
-              setMessage("Ocurrio un error al iniciar sesión");
-              showDialog();
-            }*/
+          setIsPosting(true);
+          await login(email.value, password.value);
+          const verityUser = await verify();
+          setIsPosting(false);
+          if(verityUser != null){
+            setMessage("Usuario autenticado");
+            showDialog();
+          }else{
+            setMessage("Usuario incorrecto");
+            showDialog();
+          }
         }catch(error:any){
           setMessage(error.message);
           showDialog();
@@ -82,10 +88,11 @@ export const LoginScreen = ({navigation}: Props) => {
 
         <Button 
             mode="contained" 
-            onPress={_onSignUpPressed}
+            onPress={_onLoginInPressed}
             style={styles.button}
+            disabled={isPosting}
         >
-            Registrarme
+            Iniciar Sesión
         </Button>
 
         <View style={styles.row}>

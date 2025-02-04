@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "240498821184",
+    "project_id": "idatdm2-ebcf8",
+    "storage_bucket": "idatdm2-ebcf8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240498821184:android:11863443e41ecad4a237a5",
+        "android_client_info": {
+          "package_name": "com.appnavigation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxTG83u-IU3J4HLPkhEsagersg1sC7l20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

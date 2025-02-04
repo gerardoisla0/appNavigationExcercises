@@ -13,8 +13,8 @@ export const ButtonComponent = (
     <Button
         onPress={() => onAction()}
         mode="contained"
-        textColor='black'
-        style={{marginBottom: 15}}
+        textColor='white'
+        style={{width: '47%', justifyContent: "center"}}
     >
        {label}
     </Button>

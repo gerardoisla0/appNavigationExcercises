@@ -5,6 +5,7 @@ import { SettingScreen } from '../screens/settings/SettingScreen';
 import { PokemonScreen } from '../screens/pokemons/PokemonScreen';
 import { LoginScreen } from '../screens/auth/LoginScreen';
 import { RegisterScreen } from '../screens/auth/RegisterScreen';
+import { LoadingScreen } from '../screens/auth/LoadingScreen';
 
 export type RootStackPrams = {
   Home: undefined,
@@ -13,6 +14,7 @@ export type RootStackPrams = {
   Pokemon: {id: number},
   LoginScreen: undefined,
   RegisterScreen: undefined,
+  LoadingScreen: undefined,
 }
 const Stack = createStackNavigator<RootStackPrams>();
 
@@ -20,7 +22,7 @@ export const StackNavigation = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName='RegisterScreen'
+      initialRouteName='LoadingScreen'
       screenOptions = {{
         headerShown: false,
         headerStyle:{
@@ -34,6 +36,7 @@ export const StackNavigation = () => {
       <Stack.Screen name="Pokemon" component={PokemonScreen} />
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+      <Stack.Screen name="LoadingScreen" component={LoadingScreen} />
     </Stack.Navigator>
   );
   
