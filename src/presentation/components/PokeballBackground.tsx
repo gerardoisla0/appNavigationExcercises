@@ -24,7 +24,7 @@ export const PokeballBackground = ({style}: Props) => {
         },
         style
     ]}
-   
+   testID="pokeball-img"
    />
   )
 }

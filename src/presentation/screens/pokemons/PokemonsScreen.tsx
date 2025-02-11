@@ -1,7 +1,6 @@
 import React from 'react'
-import {  View } from 'react-native'
+import {  View, FlatList } from 'react-native'
 import { globalTheme } from '../../theme/theme';
-import { FlatList } from 'react-native-gesture-handler';
 import { GetPokemonUseCase } from '../../../domain/useCases/getPokemon';
 import { PokeballBackground } from '../../components/PokeballBackground';
 import { useInfiniteQuery } from '@tanstack/react-query';
