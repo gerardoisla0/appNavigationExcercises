@@ -33,7 +33,7 @@ export const HomeScreen = () => {
             label="Chat Grupal RT"
         />
         <ButtonComponent
-            onAction={ () => navigation.navigate('Pokemons')}
+            onAction={ () => navigation.navigate('ChatFS')}
             label="Chat Grupal FS"
         />
         <ButtonComponent
